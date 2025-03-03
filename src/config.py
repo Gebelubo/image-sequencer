@@ -1,0 +1,3 @@
+API_KEY = ""
+IMAGE_FOLDER = "src/images"  
+VIDEO_DURATION=20
