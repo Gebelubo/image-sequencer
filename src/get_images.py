@@ -19,17 +19,23 @@ def download_image(query: str):
             random_image = random.choice(data["photos"])  
             image_url = random_image["src"]["original"]
             image_path = os.path.join(IMAGE_FOLDER, f"image_{query}.jpg")
+            print(image_path)
             img_data = requests.get(image_url).content
         else:
-            print("error")
+            print("error: photo not found")
+            return None
         with open(image_path, "wb") as img_file:
             img_file.write(img_data)
-
+        
+        print("retornou img")
         return image_path
-    return []
+    
+    raise Exception(response.json())
 
 def get_images_with_list(keywords:list):
     paths = []
     for k in keywords:
-        paths.append(download_image(k))
+        if k:
+            paths.append(download_image(k))
+    print("deu bom")
     return paths

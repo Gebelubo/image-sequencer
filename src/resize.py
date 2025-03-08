@@ -5,12 +5,13 @@ def find_smallest_image(image_paths):
     smallest_size = None
 
     for image_path in image_paths:
-        with Image.open(image_path) as img:
-            size = img.size  
-            
-            if smallest_size is None or (size[0] * size[1] < smallest_size[0] * smallest_size[1]):
-                smallest_size = size
-                smallest_image = image_path
+        if image_path:
+            with Image.open(image_path) as img:
+                size = img.size  
+                
+                if smallest_size is None or (size[0] * size[1] < smallest_size[0] * smallest_size[1]):
+                    smallest_size = size
+                    smallest_image = image_path
 
     return smallest_image, smallest_size
 

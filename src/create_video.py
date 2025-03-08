@@ -3,7 +3,9 @@ import shutil
 from moviepy import ImageSequenceClip
 from .resize import resize_images_to_smallest
 
-def create_video(image_paths, output_path='video', duration=20, archive_folder='archive'):
+def create_video(image_paths, output_path='video', duration:int=20, archive_folder='archive'):
+    print('paths')
+    print(image_paths)
 
     if os.path.exists(output_path):
         os.remove(output_path)
@@ -11,6 +13,7 @@ def create_video(image_paths, output_path='video', duration=20, archive_folder='
     resize_images_to_smallest(image_paths=image_paths)
 
     clip = ImageSequenceClip(image_paths, durations=[duration] * len(image_paths))
+    print("video criado")
     
     clip.write_videofile(output_path + '.mp4', fps=24)
     

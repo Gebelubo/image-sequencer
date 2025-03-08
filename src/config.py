@@ -6,4 +6,3 @@ load_dotenv()
 API_KEY=os.environ["API_KEY"]
 
 IMAGE_FOLDER = "src/images"  
-VIDEO_DURATION=20
